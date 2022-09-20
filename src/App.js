@@ -33,7 +33,7 @@ function App() {
     //   })
     //   .finally(() => setLoading(false));
     let people = [];
-    axios("https://swapi.co/api/people/")
+    axios("https://swapi.dev/api/people/")
         .then(response => {
             people = response.data.results;
             return response.data.count;
@@ -44,15 +44,14 @@ function App() {
             let promises = [];
             // start at 2 as you already queried the first page
             for (let i = 2; i <= numberOfPagesLeft; i++) {
-                promises.push(axios(`https://swapi.co/api/people?page=${i}`));
+                promises.push(axios(`https://swapi.dev/api/people?page=${i}`));
             }
             return Promise.all(promises);
         })
         .then(response => {
             //get the rest records - pages 2 through n.
             people = response.reduce((acc, data) => [...acc, ...data.data.results], people);
-            const parsedData = parseData(people.results);
-            console.log(parsedData)
+            const parsedData = parseData(people);
             setCharactersData(parsedData);
         })
         .catch((error) => {
