@@ -44,7 +44,9 @@ function App() {
           people
         );
         const parsedData = parseData(people);
+        console.log(parsedData);
         setCharactersData(parsedData);
+        setSelected(parsedData[0])
       })
       .catch((error) => {
         console.error("Error fetching data: ", error);
@@ -63,7 +65,7 @@ function App() {
         {!!loading && <Spinner data-testid="loading-spinner" animation="border" variant="info" />}
         {!loading && (
           <>
-            <p>
+            <p data-testid="header-text">
               Choose a Star Wars character to retrieve some meta-data from{" "}
               <a
                 className="App-link"
@@ -80,6 +82,7 @@ function App() {
               name="characters"
               options={charactersData}
               onChange={setSelected}
+              placeholder={"Luke Skywalker"}
             />
           </>
         )}
