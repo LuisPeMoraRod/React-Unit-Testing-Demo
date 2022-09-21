@@ -53,7 +53,6 @@ function App() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (error) return "Error!";
   return (
     <div className="App">
       <header>
