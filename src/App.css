@@ -20,5 +20,10 @@
 }
 
 .App-select {
-  font-size: 90%
+  color: black;
+}
+
+.App-card {
+  font-size: large;
+  color: black;
 }
