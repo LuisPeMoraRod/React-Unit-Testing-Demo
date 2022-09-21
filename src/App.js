@@ -60,7 +60,7 @@ function App() {
       </header>
       <div>
         {!!error && <p>An error ocurred fetching data...</p>}
-        {!!loading && <Spinner animation="border" variant="info" />}
+        {!!loading && <Spinner data-testid="loading-spinner" animation="border" variant="info" />}
         {!loading && (
           <>
             <p>
